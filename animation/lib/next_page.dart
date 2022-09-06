@@ -2,7 +2,6 @@ import 'package:animation/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 class NextPage extends StatefulWidget {
   const NextPage({super.key});
 
@@ -11,6 +10,19 @@ class NextPage extends StatefulWidget {
 }
 
 class _NextPageState extends State<NextPage> {
+
+  double imgWidth = 100;
+  double imgheight = 100;
+
+
+  void animateImg(){
+    setState(() {
+      imgWidth = 400;
+      imgheight = 400;
+      print("Animate");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,18 +34,18 @@ class _NextPageState extends State<NextPage> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/images/parrot.jpg'),
-            Text("BACK"),
+            AnimatedContainer(
+              width: imgWidth,
+              height: imgheight,
+              // color: Colors.blue,
+              duration: const Duration(seconds: 2),
+              curve: Curves.bounceOut,
+              child: Image.asset('assets/images/parrot.jpg'),
+              // child: Text("TEXT"),
+            ),
             ElevatedButton(
-              onPressed: () {
-                print("BACK");
-                Get.to(
-                  Home(),
-                  transition: Transition.leftToRightWithFade,
-                  duration: Duration(seconds: 1),
-                );
-              },
-              child: Text("NEXT"),
+              onPressed: animateImg,
+              child: Text("Animate"),
             )
           ],
         ),
