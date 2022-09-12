@@ -26,8 +26,8 @@ class _HomeState extends State<Home> {
               onPressed: () {
                 print("Next");
                 Get.to(
-                  NextPage(),
-                  transition: Transition.zoom,
+                  NextPage(testText: "TEST123"),
+                  transition: Transition.rightToLeftWithFade,
                   duration: Duration(seconds: 1),
                 );
               },
